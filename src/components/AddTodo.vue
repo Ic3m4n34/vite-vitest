@@ -20,6 +20,7 @@
 
 <script lang="ts">
 import { defineComponent, ref } from 'vue';
+import { nanoid } from 'nanoid';
 
 export default defineComponent({
   name: 'AddTodo',
@@ -28,7 +29,7 @@ export default defineComponent({
     const todoInput = ref('');
 
     const addTodo = () => {
-      emit('task-added', todoInput);
+      emit('task-added', { todo: todoInput.value, id: nanoid(), done: false });
       todoInput.value = '';
     };
 
